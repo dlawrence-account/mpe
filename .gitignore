@@ -1,0 +1,43 @@
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data: ignore raw/large, keep small samples
+data/input/
+data/raw/
+data/output/
+results/*/*.parquet
+results/*/*.feather
+
+# Credentials & secrets
+*.env
+*.ini
+*.cfg
+snowflake_credentials.*
+secrets.*
+
+# Diagrams: ignore temp exports
+diagrams/exports/*.tmp
+
