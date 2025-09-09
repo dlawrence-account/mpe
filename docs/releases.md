@@ -16,3 +16,8 @@ Includes initial folder structure, baseline .gitignore, and setup for related ap
 - [ ] Removed ...
 - [ ] Fixed ...
 
+## v1 — 2025-09-09
+(One‑line purpose of this release)
+
+- [ ] 
+
