@@ -1,0 +1,31 @@
+Direct answer: Standard practice estimates the multifractal triple by (1) H via DFA/MF‑DFA slope of log S2(τ) vs log τ; (2) λ (intermittency) from curvature of the scaling function ζ(q) or width Δh of the multifractal spectrum; (3) α (central stable‑like tail) by fitting a Lévy‑stable or scaling law to the core; and (4) a separate far‑tail α via extreme‑value methods (Hill/POT) on exceedances.[1][2][3]
+
+## H (Hurst exponent)
+- Compute generalized structure functions Sq(τ)=E|X(t+τ)−X(t)|^q across lags; estimate H as the slope of log S2(τ) versus log τ (or use DFA/MF‑DFA for robustness to trends), typically over an intermediate scaling range to avoid microstructure and aggregation biases. [1][4]  
+- MF‑DFA steps: integrate demeaned series, detrend in windows, compute fluctuation functions Fq(s) and fit Fq(s)∝s^{h(q)}; H is h(2) for returns.[4][5]
+
+## λ (intermittency strength)
+- Estimate the scaling function ζ(q)=qH−(λ^2/2)(q^2−q) for lognormal‑cascade–type models by regressing log Sq(τ) on log τ across multiple q; infer λ from the curvature (departure of ζ(q) from linearity).[3][5]
+- Alternatively, compute the multifractal spectrum f(αloc) via Legendre transform of τ(q)=ζ(q) and summarize λ by spectrum width Δh=h(qmin)−h(qmax) as a practical intermittency proxy: larger Δh implies stronger multifractality.[5][1]
+
+## Central “stable‑like” α (core tails)
+- Fit the central body of returns with a Lévy‑stable model or symmetric power‑law windowed around the center (excluding extremes); report α from maximum likelihood or quantile‑based methods, acknowledging that pure stable fits generally hold only in the core, not in far tails.[6][5]
+- Cross‑check with log–log survival plots over moderate thresholds to ensure a stable‑like slope before extreme cutoffs.[6]
+
+## Far‑tail α (extremes)
+- Use extreme‑value theory on exceedances: Hill estimator on the top‑k order statistics or Peaks‑Over‑Threshold (POT)/Generalized Pareto; select k/threshold via stability plots or cross‑validation, and report α (tail index) with CIs, separately for upper/lower tails.[2][1]
+- Validate with QQ‑plots against a fitted Pareto/GPD; perform sensitivity analysis across plausible tail fractions to demonstrate robustness.[1][3]
+
+## Practical pipeline
+- Preprocess minimal cleaning; compute MF‑DFA Fq(s) for q grid (e.g., 0.5–4.0) and lags spanning days to months; estimate h(q), derive ζ(q), H=h(2), and λ from ζ(q) curvature or Δh.[4][5]
+- Estimate central α via stable fit on middle quantiles (exclude top/bottom 1–5%); then estimate far‑tail α via Hill/POT on upper and lower tails separately (e.g., top 1–5%), with rolling windows for regime shifts.[2][1]
+
+## Reporting norms
+- Always state horizon, q‑range, scaling window, detrending order, and tail threshold/k; provide uncertainty (bootstrap CIs) and show stability plots for tail estimates; note crises widen ζ(q) curvature (↑λ) and may reduce far‑tail α (heavier tails).[3][1]
+
+[1](https://pmc.ncbi.nlm.nih.gov/articles/PMC8392555/)
+[2](https://arxiv.org/pdf/1806.07604.pdf)
+[3](https://www.econstor.eu/bitstream/10419/181302/1/cesifo1_wp7102.pdf)
+[4](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2012.00141/full)
+[5](https://arxiv.org/pdf/1805.04750.pdf)
+[6](https://pmc.ncbi.nlm.nih.gov/articles/PMC8303836/)

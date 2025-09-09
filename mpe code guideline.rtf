@@ -1,0 +1,785 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;\f2\froman\fcharset0 Times-Bold;
+\f3\fmodern\fcharset0 Courier-Bold;\f4\fnil\fcharset0 HelveticaNeue;\f5\fmodern\fcharset0 Courier-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red60\green60\blue59;
+\red52\green92\blue158;\red123\green126\blue121;\red117\green66\blue151;\red240\green115\blue25;\red95\green124\blue3;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c0\c84706;\cssrgb\c30196\c30196\c29804;
+\cssrgb\c25882\c44314\c68235;\cssrgb\c55686\c56471\c54902;\cssrgb\c53725\c34902\c65882;\cssrgb\c96078\c52941\c12157;\cssrgb\c44314\c54902\c0;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Perfect! Here's the implementation tailored for your 
+\f1\fs26 \strokec2 multifractal\\mpe
+\f0\fs24 \strokec2  folder structure:\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 Project Structure for 
+\f3\fs39 \strokec2 multifractal\\mpe
+\f2\fs36 \strokec2 \
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 text\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 multifractal/\
+\uc0\u9492 \u9472 \u9472  mpe/\
+    \uc0\u9500 \u9472 \u9472  data/\
+    \uc0\u9474    \u9500 \u9472 \u9472  logreturns/          # Your pre-calculated (Date, LogReturns) files\
+    \uc0\u9474    \u9492 \u9472 \u9472  metadata.csv         # Universal metadata file\
+    \uc0\u9500 \u9472 \u9472  src/\
+    \uc0\u9474    \u9500 \u9472 \u9472  estimation.py        # Core parameter estimation functions\
+    \uc0\u9474    \u9500 \u9472 \u9472  combination.py       # Parameter combination logic\
+    \uc0\u9474    \u9492 \u9472 \u9472  validation.py        # Results validation\
+    \uc0\u9500 \u9472 \u9472  results/\
+    \uc0\u9474    \u9500 \u9472 \u9472  individual_parameters.csv\
+    \uc0\u9474    \u9492 \u9472 \u9472  combined_parameters.csv\
+    \uc0\u9500 \u9472 \u9472  complete_analysis.py     # Main analysis script\
+    \uc0\u9500 \u9472 \u9472  requirements.txt         # Package dependencies\
+    \uc0\u9492 \u9472 \u9472  README.md               # Usage instructions\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 Setup Commands\
+Navigate to your folder:\
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 bash\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 cd\cf4 \strokec4  multifractal\\mpe\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f5\i \cf6 \strokec6 # Create directory structure
+\f1\i0 \cf4 \strokec4 \
+mkdir data\\logreturns\
+mkdir src\
+mkdir results\
+\
+
+\f5\i \cf6 \strokec6 # Install required packages
+\f1\i0 \cf4 \strokec4 \
+pip install numpy pandas scipy MFDFA fathon matplotlib seaborn\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 Core Implementation Files\
+1. 
+\f3\fs39 \strokec2 requirements.txt
+\f2\fs36 \strokec2 \
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 text\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 numpy>=1.21.0\
+pandas>=1.3.0\
+scipy>=1.7.0\
+MFDFA>=0.4.0\
+fathon>=1.0.0\
+matplotlib>=3.3.0\
+seaborn>=0.11.0\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 2. 
+\f3\fs39 \strokec2 src/estimation.py
+\f2\fs36 \strokec2 \
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 python\
+\pard\pardeftab720\partightenfactor0
+
+\f5\i \cf6 \strokec6 # multifractal/mpe/src/estimation.py
+\f1\i0 \cf4 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  numpy 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  np\
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  pandas 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  pd\
+
+\f3\b \cf7 \strokec7 from
+\f1\b0 \cf4 \strokec4  scipy.stats 
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  linregress\
+
+\f3\b \cf7 \strokec7 from
+\f1\b0 \cf4 \strokec4  MFDFA 
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  MFDFA\
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  fathon\
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  estimate_alpha_hill(returns, tail_fraction=\cf8 \strokec8 0.05\cf4 \strokec4 ):\
+    \cf9 \strokec9 """Hill estimator for stability parameter (\uc0\u945 )"""\cf4 \strokec4 \
+    abs_returns = np.\cf8 \strokec8 abs\cf4 \strokec4 (returns)\
+    threshold = np.percentile(abs_returns, (\cf8 \strokec8 1\cf4 \strokec4 -tail_fraction)*\cf8 \strokec8 100\cf4 \strokec4 )\
+    tail_data = abs_returns[abs_returns > threshold]\
+    \
+    
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 len\cf4 \strokec4 (tail_data) > \cf8 \strokec8 10\cf4 \strokec4 :\
+        log_ratios = np.log(tail_data / threshold)\
+        alpha_est = \cf8 \strokec8 1.0\cf4 \strokec4  / np.mean(log_ratios)\
+        
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  np.clip(alpha_est, \cf8 \strokec8 1.3\cf4 \strokec4 , \cf8 \strokec8 2.0\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 1.7\cf4 \strokec4 \
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  estimate_hurst_dfa(returns):\
+    \cf9 \strokec9 """Hurst exponent (H) via Detrended Fluctuation Analysis"""\cf4 \strokec4 \
+    y = np.cumsum(returns - np.mean(returns))\
+    \
+    
+\f3\b \cf7 \strokec7 try
+\f1\b0 \cf4 \strokec4 :\
+        dfa = fathon.DFA(y)\
+        lags = np.unique(np.logspace(\cf8 \strokec8 0.5\cf4 \strokec4 , \cf8 \strokec8 3\cf4 \strokec4 , \cf8 \strokec8 20\cf4 \strokec4 ).astype(\cf8 \strokec8 int\cf4 \strokec4 ))\
+        fluct, H = dfa.computeFlucVec(lags, polOrd=\cf8 \strokec8 1\cf4 \strokec4 )\
+        
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  np.clip(H[\cf8 \strokec8 0\cf4 \strokec4 ], \cf8 \strokec8 0.1\cf4 \strokec4 , \cf8 \strokec8 0.9\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 except
+\f1\b0 \cf4 \strokec4 :\
+        
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 0.5\cf4 \strokec4 \
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  estimate_lambda_mfdfa(returns):\
+    \cf9 \strokec9 """Intermittency parameter (\uc0\u955 ) via MFDFA"""\cf4 \strokec4 \
+    y = np.cumsum(returns - np.mean(returns))\
+    \
+    
+\f3\b \cf7 \strokec7 try
+\f1\b0 \cf4 \strokec4 :\
+        lag = np.unique(np.logspace(\cf8 \strokec8 0.5\cf4 \strokec4 , \cf8 \strokec8 2.5\cf4 \strokec4 , \cf8 \strokec8 15\cf4 \strokec4 ).astype(\cf8 \strokec8 int\cf4 \strokec4 ))\
+        q = np.arange(-\cf8 \strokec8 3\cf4 \strokec4 , \cf8 \strokec8 4\cf4 \strokec4 )\
+        q = q[q != \cf8 \strokec8 0\cf4 \strokec4 ]\
+        \
+        lag, dfa = MFDFA(y, lag=lag, q=q, order=\cf8 \strokec8 1\cf4 \strokec4 )\
+        \
+        
+\f5\i \cf6 \strokec6 # Extract \uc0\u955  from multifractal spectrum curvature
+\f1\i0 \cf4 \strokec4 \
+        tau_q = []\
+        
+\f3\b \cf7 \strokec7 for
+\f1\b0 \cf4 \strokec4  i, q_val 
+\f3\b \cf7 \strokec7 in
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 enumerate\cf4 \strokec4 (q):\
+            
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  i < \cf8 \strokec8 len\cf4 \strokec4 (dfa) 
+\f3\b \cf7 \strokec7 and
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 len\cf4 \strokec4 (dfa[i]) > \cf8 \strokec8 5\cf4 \strokec4 :\
+                log_lag = np.log10(lag)\
+                log_dfa = np.log10(dfa[i])\
+                valid_idx = np.isfinite(log_lag) & np.isfinite(log_dfa)\
+                
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  np.\cf8 \strokec8 sum\cf4 \strokec4 (valid_idx) > \cf8 \strokec8 3\cf4 \strokec4 :\
+                    slope, _ = np.polyfit(log_lag[valid_idx], log_dfa[valid_idx], \cf8 \strokec8 1\cf4 \strokec4 )\
+                    tau_q.append(q_val * slope - \cf8 \strokec8 1\cf4 \strokec4 )\
+        \
+        
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 len\cf4 \strokec4 (tau_q) > \cf8 \strokec8 5\cf4 \strokec4 :\
+            q_vals = q[:\cf8 \strokec8 len\cf4 \strokec4 (tau_q)]\
+            coeffs = np.polyfit(q_vals, tau_q, \cf8 \strokec8 2\cf4 \strokec4 )\
+            lambda_est = \cf8 \strokec8 abs\cf4 \strokec4 (coeffs[\cf8 \strokec8 0\cf4 \strokec4 ])\
+            
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  np.clip(lambda_est, \cf8 \strokec8 0.0\cf4 \strokec4 , \cf8 \strokec8 1.0\cf4 \strokec4 )\
+            \
+    
+\f3\b \cf7 \strokec7 except
+\f1\b0 \cf4 \strokec4  Exception 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  e:\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"MFDFA failed: \cf4 \strokec4 \{e\}\cf9 \strokec9 "\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 0.2\cf4 \strokec4 \
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  estimate_mapm_parameters(returns):\
+    \cf9 \strokec9 """Main MAPM parameter estimation function"""\cf4 \strokec4 \
+    
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  \cf8 \strokec8 len\cf4 \strokec4 (returns) < \cf8 \strokec8 100\cf4 \strokec4 :\
+        
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  None\
+    \
+    
+\f5\i \cf6 \strokec6 # Remove extreme outliers
+\f1\i0 \cf4 \strokec4 \
+    returns_clean = returns[np.\cf8 \strokec8 abs\cf4 \strokec4 (returns) < \cf8 \strokec8 5\cf4 \strokec4  * np.std(returns)]\
+    \
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  \{\
+        \cf9 \strokec9 'alpha'\cf4 \strokec4 : estimate_alpha_hill(returns_clean),\
+        \cf9 \strokec9 'H'\cf4 \strokec4 : estimate_hurst_dfa(returns_clean),\
+        \cf9 \strokec9 'lambda'\cf4 \strokec4 : estimate_lambda_mfdfa(returns_clean),\
+        \cf9 \strokec9 'n_observations'\cf4 \strokec4 : \cf8 \strokec8 len\cf4 \strokec4 (returns_clean)\
+    \}\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 3. 
+\f3\fs39 \strokec2 src/combination.py
+\f2\fs36 \strokec2 \
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 python\
+\pard\pardeftab720\partightenfactor0
+
+\f5\i \cf6 \strokec6 # multifractal/mpe/src/combination.py
+\f1\i0 \cf4 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  pandas 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  pd\
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  numpy 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  np\
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  combine_by_groups(results_df):\
+    \cf9 \strokec9 """Combine parameters by derivative groups using metadata weights"""\cf4 \strokec4 \
+    combined_results = \{\}\
+    \
+    
+\f3\b \cf7 \strokec7 for
+\f1\b0 \cf4 \strokec4  group_id 
+\f3\b \cf7 \strokec7 in
+\f1\b0 \cf4 \strokec4  results_df[\cf9 \strokec9 'group_id'\cf4 \strokec4 ].unique():\
+        group_data = results_df[results_df[\cf9 \strokec9 'group_id'\cf4 \strokec4 ] == group_id]\
+        weights = group_data[\cf9 \strokec9 'weight_factor'\cf4 \strokec4 ].values\
+        \
+        combined_results[group_id] = \{\
+            \cf9 \strokec9 'alpha'\cf4 \strokec4 : np.average(group_data[\cf9 \strokec9 'alpha'\cf4 \strokec4 ], weights=weights),\
+            \cf9 \strokec9 'H'\cf4 \strokec4 : np.average(group_data[\cf9 \strokec9 'H'\cf4 \strokec4 ], weights=weights),\
+            \cf9 \strokec9 'lambda'\cf4 \strokec4 : np.average(group_data[\cf9 \strokec9 'lambda'\cf4 \strokec4 ], weights=weights),\
+            \cf9 \strokec9 'n_files'\cf4 \strokec4 : \cf8 \strokec8 len\cf4 \strokec4 (group_data),\
+            \cf9 \strokec9 'total_observations'\cf4 \strokec4 : group_data[\cf9 \strokec9 'n_observations'\cf4 \strokec4 ].\cf8 \strokec8 sum\cf4 \strokec4 ()\
+        \}\
+    \
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  combined_results\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 4. 
+\f3\fs39 \strokec2 src/validation.py
+\f2\fs36 \strokec2 \
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 python\
+\pard\pardeftab720\partightenfactor0
+
+\f5\i \cf6 \strokec6 # multifractal/mpe/src/validation.py
+\f1\i0 \cf4 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  numpy 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  np\
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  validate_alpha_consistency(combined_results, tolerance=\cf8 \strokec8 0.1\cf4 \strokec4 ):\
+    \cf9 \strokec9 """Test MAPM alpha consistency prediction"""\cf4 \strokec4 \
+    alphas = [results[\cf9 \strokec9 'alpha'\cf4 \strokec4 ] 
+\f3\b \cf7 \strokec7 for
+\f1\b0 \cf4 \strokec4  results 
+\f3\b \cf7 \strokec7 in
+\f1\b0 \cf4 \strokec4  combined_results.values()]\
+    alpha_std = np.std(alphas)\
+    \
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  \{\
+        \cf9 \strokec9 'consistent'\cf4 \strokec4 : alpha_std < tolerance,\
+        \cf9 \strokec9 'alpha_mean'\cf4 \strokec4 : np.mean(alphas),\
+        \cf9 \strokec9 'alpha_std'\cf4 \strokec4 : alpha_std,\
+        \cf9 \strokec9 'test_result'\cf4 \strokec4 : \cf9 \strokec9 'PASS'\cf4 \strokec4  
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  alpha_std < tolerance 
+\f3\b \cf7 \strokec7 else
+\f1\b0 \cf4 \strokec4  \cf9 \strokec9 'FAIL'\cf4 \strokec4 \
+    \}\
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  validate_parameter_bounds(combined_results):\
+    \cf9 \strokec9 """Check parameter bounds validity"""\cf4 \strokec4 \
+    validation = \{\}\
+    \
+    
+\f3\b \cf7 \strokec7 for
+\f1\b0 \cf4 \strokec4  group, params 
+\f3\b \cf7 \strokec7 in
+\f1\b0 \cf4 \strokec4  combined_results.items():\
+        validation[group] = \{\
+            \cf9 \strokec9 'alpha_valid'\cf4 \strokec4 : \cf8 \strokec8 1.3\cf4 \strokec4  <= params[\cf9 \strokec9 'alpha'\cf4 \strokec4 ] <= \cf8 \strokec8 2.0\cf4 \strokec4 ,\
+            \cf9 \strokec9 'H_valid'\cf4 \strokec4 : \cf8 \strokec8 0.1\cf4 \strokec4  <= params[\cf9 \strokec9 'H'\cf4 \strokec4 ] <= \cf8 \strokec8 0.9\cf4 \strokec4 ,\
+            \cf9 \strokec9 'lambda_valid'\cf4 \strokec4 : \cf8 \strokec8 0.0\cf4 \strokec4  <= params[\cf9 \strokec9 'lambda'\cf4 \strokec4 ] <= \cf8 \strokec8 1.0\cf4 \strokec4 \
+        \}\
+    \
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  validation\
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  generate_summary_report(combined_results):\
+    \cf9 \strokec9 """Generate analysis summary"""\cf4 \strokec4 \
+    alpha_test = validate_alpha_consistency(combined_results)\
+    bounds_test = validate_parameter_bounds(combined_results)\
+    \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "="\cf4 \strokec4 *\cf8 \strokec8 60\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "MULTIFRACTAL PARAMETER ESTIMATION (MPE) RESULTS"\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "="\cf4 \strokec4 *\cf8 \strokec8 60\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "\\nGroup Results:"\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 for
+\f1\b0 \cf4 \strokec4  group, params 
+\f3\b \cf7 \strokec7 in
+\f1\b0 \cf4 \strokec4  combined_results.items():\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\cf4 \strokec4 \{group:15\}\cf9 \strokec9 : \uc0\u945 =\cf4 \strokec4 \{params[\cf9 \strokec9 'alpha'\cf4 \strokec4 ]:.3f\}\cf9 \strokec9 , H=\cf4 \strokec4 \{params[\cf9 \strokec9 'H'\cf4 \strokec4 ]:.3f\}\cf9 \strokec9 , \uc0\u955 =\cf4 \strokec4 \{params[\cf9 \strokec9 'lambda'\cf4 \strokec4 ]:.3f\}\cf9 \strokec9  (\cf4 \strokec4 \{params[\cf9 \strokec9 'n_files'\cf4 \strokec4 ]\}\cf9 \strokec9  files)"\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\\nAlpha Consistency Test: \cf4 \strokec4 \{alpha_test[\cf9 \strokec9 'test_result'\cf4 \strokec4 ]\}\cf9 \strokec9 "\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"Alpha Mean: \cf4 \strokec4 \{alpha_test[\cf9 \strokec9 'alpha_mean'\cf4 \strokec4 ]:.4f\}\cf9 \strokec9 "\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"Alpha Std:  \cf4 \strokec4 \{alpha_test[\cf9 \strokec9 'alpha_std'\cf4 \strokec4 ]:.4f\}\cf9 \strokec9 "\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "\\nParameter Bounds Validation:"\cf4 \strokec4 )\
+    all_valid = True\
+    
+\f3\b \cf7 \strokec7 for
+\f1\b0 \cf4 \strokec4  group, bounds 
+\f3\b \cf7 \strokec7 in
+\f1\b0 \cf4 \strokec4  bounds_test.items():\
+        group_valid = \cf8 \strokec8 all\cf4 \strokec4 (bounds.values())\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\cf4 \strokec4 \{group:15\}\cf9 \strokec9 : \cf4 \strokec4 \{\cf9 \strokec9 '\uc0\u10003 '\cf4 \strokec4  
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  group_valid 
+\f3\b \cf7 \strokec7 else
+\f1\b0 \cf4 \strokec4  \cf9 \strokec9 '\uc0\u10007 '\cf4 \strokec4 \}\cf9 \strokec9 "\cf4 \strokec4 )\
+        all_valid = all_valid 
+\f3\b \cf7 \strokec7 and
+\f1\b0 \cf4 \strokec4  group_valid\
+    \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\\nOverall Validation: \cf4 \strokec4 \{\cf9 \strokec9 'PASS'\cf4 \strokec4  
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  all_valid 
+\f3\b \cf7 \strokec7 and
+\f1\b0 \cf4 \strokec4  alpha_test[\cf9 \strokec9 'consistent'\cf4 \strokec4 ] 
+\f3\b \cf7 \strokec7 else
+\f1\b0 \cf4 \strokec4  \cf9 \strokec9 'FAIL'\cf4 \strokec4 \}\cf9 \strokec9 "\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "="\cf4 \strokec4 *\cf8 \strokec8 60\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  \{\
+        \cf9 \strokec9 'alpha_consistency'\cf4 \strokec4 : alpha_test,\
+        \cf9 \strokec9 'bounds_validation'\cf4 \strokec4 : bounds_test,\
+        \cf9 \strokec9 'overall_pass'\cf4 \strokec4 : all_valid 
+\f3\b \cf7 \strokec7 and
+\f1\b0 \cf4 \strokec4  alpha_test[\cf9 \strokec9 'consistent'\cf4 \strokec4 ]\
+    \}\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 5. 
+\f3\fs39 \strokec2 complete_analysis.py
+\f2\fs36 \strokec2  (Main Script)\
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 python\
+\pard\pardeftab720\partightenfactor0
+
+\f5\i \cf6 \strokec6 # multifractal/mpe/complete_analysis.py
+\f1\i0 \cf4 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf9 \strokec9 """\
+Multifractal Parameter Estimation (MPE) - Main Analysis Script\
+Processes pre-calculated logreturns files using metadata-driven approach\
+"""\cf4 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  sys\
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  os\
+sys.path.append(\cf9 \strokec9 'src'\cf4 \strokec4 )\
+\
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  pandas 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  pd\
+
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  numpy 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  np\
+
+\f3\b \cf7 \strokec7 from
+\f1\b0 \cf4 \strokec4  estimation 
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  estimate_mapm_parameters\
+
+\f3\b \cf7 \strokec7 from
+\f1\b0 \cf4 \strokec4  combination 
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  combine_by_groups\
+
+\f3\b \cf7 \strokec7 from
+\f1\b0 \cf4 \strokec4  validation 
+\f3\b \cf7 \strokec7 import
+\f1\b0 \cf4 \strokec4  generate_summary_report\
+\
+
+\f3\b \cf7 \strokec7 def
+\f1\b0 \cf4 \strokec4  run_mpe_analysis(metadata_file=\cf9 \strokec9 'data/metadata.csv'\cf4 \strokec4 ):\
+    \cf9 \strokec9 """\
+    Complete Multifractal Parameter Estimation Analysis\
+    \
+    Args:\
+        metadata_file: Path to metadata CSV file\
+    \
+    Returns:\
+        tuple: (individual_results_df, combined_results_dict, validation_report)\
+    """\cf4 \strokec4 \
+    \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "Multifractal Parameter Estimation (MPE) Analysis"\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "="\cf4 \strokec4  * \cf8 \strokec8 50\cf4 \strokec4 )\
+    \
+    
+\f5\i \cf6 \strokec6 # Load metadata
+\f1\i0 \cf4 \strokec4 \
+    
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  
+\f3\b \cf7 \strokec7 not
+\f1\b0 \cf4 \strokec4  os.path.exists(metadata_file):\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"Error: Metadata file '\cf4 \strokec4 \{metadata_file\}\cf9 \strokec9 ' not found!"\cf4 \strokec4 )\
+        
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  None, None, None\
+        \
+    metadata = pd.read_csv(metadata_file)\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"Loaded metadata for \cf4 \strokec4 \{\cf8 \strokec8 len\cf4 \strokec4 (metadata)\}\cf9 \strokec9  files"\cf4 \strokec4 )\
+    \
+    
+\f5\i \cf6 \strokec6 # Process each file
+\f1\i0 \cf4 \strokec4 \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "\\nProcessing logreturns files..."\cf4 \strokec4 )\
+    all_results = []\
+    \
+    
+\f3\b \cf7 \strokec7 for
+\f1\b0 \cf4 \strokec4  idx, row 
+\f3\b \cf7 \strokec7 in
+\f1\b0 \cf4 \strokec4  metadata.iterrows():\
+        filename = \cf9 \strokec9 f"data/logreturns/\cf4 \strokec4 \{row[\cf9 \strokec9 'filename'\cf4 \strokec4 ]\}\cf9 \strokec9 "\cf4 \strokec4 \
+        \
+        
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  
+\f3\b \cf7 \strokec7 not
+\f1\b0 \cf4 \strokec4  os.path.exists(filename):\
+            
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\uc0\u9888  Warning: \cf4 \strokec4 \{filename\}\cf9 \strokec9  not found, skipping..."\cf4 \strokec4 )\
+            
+\f3\b \cf7 \strokec7 continue
+\f1\b0 \cf4 \strokec4 \
+            \
+        
+\f3\b \cf7 \strokec7 try
+\f1\b0 \cf4 \strokec4 :\
+            
+\f5\i \cf6 \strokec6 # Load returns directly
+\f1\i0 \cf4 \strokec4 \
+            returns = pd.read_csv(filename)[\cf9 \strokec9 'LogReturns'\cf4 \strokec4 ].values\
+            \
+            
+\f5\i \cf6 \strokec6 # Estimate parameters
+\f1\i0 \cf4 \strokec4 \
+            params = estimate_mapm_parameters(returns)\
+            \
+            
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  params:\
+                
+\f5\i \cf6 \strokec6 # Add metadata
+\f1\i0 \cf4 \strokec4 \
+                result = \{\
+                    \cf9 \strokec9 'filename'\cf4 \strokec4 : row[\cf9 \strokec9 'filename'\cf4 \strokec4 ],\
+                    \cf9 \strokec9 'group_id'\cf4 \strokec4 : row[\cf9 \strokec9 'group_id'\cf4 \strokec4 ],\
+                    \cf9 \strokec9 'weight_factor'\cf4 \strokec4 : row[\cf9 \strokec9 'weight_factor'\cf4 \strokec4 ],\
+                    **params\
+                \}\
+                all_results.append(result)\
+                
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\uc0\u10003  \cf4 \strokec4 \{row[\cf9 \strokec9 'filename'\cf4 \strokec4 ]:30\}\cf9 \strokec9 : \uc0\u945 =\cf4 \strokec4 \{params[\cf9 \strokec9 'alpha'\cf4 \strokec4 ]:.3f\}\cf9 \strokec9 , H=\cf4 \strokec4 \{params[\cf9 \strokec9 'H'\cf4 \strokec4 ]:.3f\}\cf9 \strokec9 , \uc0\u955 =\cf4 \strokec4 \{params[\cf9 \strokec9 'lambda'\cf4 \strokec4 ]:.3f\}\cf9 \strokec9 "\cf4 \strokec4 )\
+            
+\f3\b \cf7 \strokec7 else
+\f1\b0 \cf4 \strokec4 :\
+                
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\uc0\u10007  \cf4 \strokec4 \{row[\cf9 \strokec9 'filename'\cf4 \strokec4 ]:30\}\cf9 \strokec9 : Estimation failed (insufficient data)"\cf4 \strokec4 )\
+                \
+        
+\f3\b \cf7 \strokec7 except
+\f1\b0 \cf4 \strokec4  Exception 
+\f3\b \cf7 \strokec7 as
+\f1\b0 \cf4 \strokec4  e:\
+            
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\uc0\u10007  \cf4 \strokec4 \{row[\cf9 \strokec9 'filename'\cf4 \strokec4 ]:30\}\cf9 \strokec9 : Error - \cf4 \strokec4 \{\cf8 \strokec8 str\cf4 \strokec4 (e)\}\cf9 \strokec9 "\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  
+\f3\b \cf7 \strokec7 not
+\f1\b0 \cf4 \strokec4  all_results:\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "No valid results obtained!"\cf4 \strokec4 )\
+        
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  None, None, None\
+    \
+    
+\f5\i \cf6 \strokec6 # Convert to DataFrame
+\f1\i0 \cf4 \strokec4 \
+    results_df = pd.DataFrame(all_results)\
+    \
+    
+\f5\i \cf6 \strokec6 # Combine by groups
+\f1\i0 \cf4 \strokec4 \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\\nCombining \cf4 \strokec4 \{\cf8 \strokec8 len\cf4 \strokec4 (all_results)\}\cf9 \strokec9  results by derivative groups..."\cf4 \strokec4 )\
+    combined_results = combine_by_groups(results_df)\
+    \
+    
+\f5\i \cf6 \strokec6 # Generate validation report
+\f1\i0 \cf4 \strokec4 \
+    validation_report = generate_summary_report(combined_results)\
+    \
+    
+\f5\i \cf6 \strokec6 # Save results
+\f1\i0 \cf4 \strokec4 \
+    os.makedirs(\cf9 \strokec9 'results'\cf4 \strokec4 , exist_ok=True)\
+    results_df.to_csv(\cf9 \strokec9 'results/individual_parameters.csv'\cf4 \strokec4 , index=False)\
+    \
+    combined_df = pd.DataFrame(combined_results).T\
+    combined_df.to_csv(\cf9 \strokec9 'results/combined_parameters.csv'\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"\\nResults saved:"\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"- Individual parameters: results/individual_parameters.csv"\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 f"- Combined parameters:   results/combined_parameters.csv"\cf4 \strokec4 )\
+    \
+    
+\f3\b \cf7 \strokec7 return
+\f1\b0 \cf4 \strokec4  results_df, combined_results, validation_report\
+\
+
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  __name__ == \cf9 \strokec9 "__main__"\cf4 \strokec4 :\
+    
+\f5\i \cf6 \strokec6 # Run the complete analysis
+\f1\i0 \cf4 \strokec4 \
+    individual, combined, validation = run_mpe_analysis()\
+    \
+    
+\f3\b \cf7 \strokec7 if
+\f1\b0 \cf4 \strokec4  combined:\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "\\nAnalysis completed successfully!"\cf4 \strokec4 )\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "Check the results/ directory for output files."\cf4 \strokec4 )\
+    
+\f3\b \cf7 \strokec7 else
+\f1\b0 \cf4 \strokec4 :\
+        
+\f3\b \cf7 \strokec7 print
+\f1\b0 \cf4 \strokec4 (\cf9 \strokec9 "Analysis failed - check your data files and metadata."\cf4 \strokec4 )\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 6. Sample 
+\f3\fs39 \strokec2 data/metadata.csv
+\f2\fs36 \strokec2 \
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 text\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 filename,group_id,weight_factor\
+ndx_returns.csv,UNDERLYING,1.0\
+eur_call_4500.csv,EUROPEAN,0.4\
+eur_call_4600.csv,EUROPEAN,0.3\
+eur_put_4500.csv,EUROPEAN,0.3\
+asian_call_4500.csv,ASIAN,0.6\
+asian_put_4500.csv,ASIAN,0.4\
+barrier_up_4500.csv,BARRIER,0.7\
+barrier_down_4500.csv,BARRIER,0.3\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 Usage Instructions\
+1. Setup (One Time)\
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 bash\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 cd\cf4 \strokec4  multifractal\\mpe\
+pip install -r requirements.txt\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 2. Add Your Data\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0
+\f0\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Place your 
+\f1\fs26 (Date, LogReturns)
+\f0\fs24  files in 
+\f1\fs26 data/logreturns/
+\f0\fs24 \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Update 
+\f1\fs26 data/metadata.csv
+\f0\fs24  with your filenames and groupings\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 3. Run Analysis\
+\pard\pardeftab720\qc\partightenfactor0
+
+\f4\b0\fs22 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 \strokec2 bash\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 python complete_analysis.py\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 \strokec2 4. Results\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0
+\f0\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Individual parameters: 
+\f1\fs26 results/individual_parameters.csv
+\f0\fs24 \
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Combined parameters: 
+\f1\fs26 results/combined_parameters.csv
+\f0\fs24 \
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Console output shows validation results\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 This structure keeps everything organized in your 
+\f1\fs26 \strokec2 multifractal\\mpe
+\f0\fs24 \strokec2  folder while maintaining the simple, direct approach for your pre-calculated logreturns files.\
+}

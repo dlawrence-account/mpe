@@ -1,0 +1,9 @@
+	Campbell, J. Y., & Shiller, R. J. 1987. Cointegration and Tests of Present Value Models. Journal of Political Economy, 95(5), 1062–1088.
+	•	LeRoy, S. F., & Porter, R. D. 1981. The Present-Value Relation: Tests Based on Implied Variance Bounds. Econometrica, 49(3), 555–574.
+	•	West, K. D. 1988. Bubbles, Fads, and Stock Price Volatility Tests: A Partial Evaluation. Journal of Finance, 43(3), 639–656.
+
+Munkres, J. R. (2021). Topology (2nd ed., Pearson Modern Classics ed., pp. 294–314, Chapter 8: Baire Spaces). Boston, MA: Pearson.mfdfa_demo.ipynb
+
+mfdfa_demo.ipynb
+
+run_mfdfa.py
