@@ -41,4 +41,3 @@ secrets.*
 # Diagrams: ignore temp exports
 diagrams/exports/*.tmp
 
-mpe_backup/
