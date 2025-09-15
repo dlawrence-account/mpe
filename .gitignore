@@ -1,4 +1,4 @@
-# OS / Editor junk
+	# OS / Editor junk
 .DS_Store
 Thumbs.db
 *.swp
@@ -41,4 +41,4 @@ secrets.*
 # Diagrams: ignore temp exports
 diagrams/exports/*.tmp
 
-mpe_backup/
+<<<<<<< HEAD
